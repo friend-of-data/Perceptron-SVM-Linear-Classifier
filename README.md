@@ -9,5 +9,5 @@ Key knowledge points in this small project:
 - Perceptron algorithm
 - Pegasos algorithm
 - Support vector machine
-- Large margin classifier \
+- Large margin classifier <br>
 Please note, this project is one of the homework of MIT online course MITx 6.86x. So you should not simply copy the code (where #your code here is designated in project1.py and main.py) and submit it as your own answer if you are also taking this course.
