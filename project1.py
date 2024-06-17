@@ -130,13 +130,10 @@ def perceptron(feature_matrix, labels, T):
     # Your code here
     theta=np.zeros(feature_matrix.shape[1])
     theta_0=0.0
-    #raise NotImplementedError
+  
     for t in range(T):
         for i in get_order(feature_matrix.shape[0]):
             theta,theta_0=perceptron_single_step_update(feature_matrix[i],labels[i],theta,theta_0)
-            # Your code here
-            #raise NotImplementedError
-    # Your code here
     return theta,theta_0
 
 
@@ -360,8 +357,6 @@ def extract_words(text):
         a list of lowercased words in the string, where punctuation and digits
         count as their own words.
     """
-    # Your code here
-    raise NotImplementedError
 
     for c in punctuation + digits:
         text = text.replace(c, ' ' + c + ' ')
@@ -369,7 +364,7 @@ def extract_words(text):
 
 
 
-def bag_of_words(texts, remove_stopword=False):
+def bag_of_words(texts, remove_stopword=True):
     """
     NOTE: feel free to change this code as guided by Section 3 (e.g. remove
     stopwords, add bigrams etc.)
@@ -380,15 +375,15 @@ def bag_of_words(texts, remove_stopword=False):
         a dictionary that maps each word appearing in `texts` to a unique
         integer `index`.
     """
-    # Your code here
-    raise NotImplementedError
+    with open('stopwords.txt','r') as file:
+        stopword=file.read().splitlines()
     
     indices_by_word = {}  # maps word to unique index
     for text in texts:
         word_list = extract_words(text)
         for word in word_list:
             if word in indices_by_word: continue
-            if word in stopword: continue
+            if remove_stopword and word in stopword: continue # consider removing stopwords in case it is set true 
             indices_by_word[word] = len(indices_by_word)
 
     return indices_by_word
@@ -413,8 +408,7 @@ def extract_bow_feature_vectors(reviews, indices_by_word, binarize=True):
             if word not in indices_by_word: continue
             feature_matrix[i, indices_by_word[word]] += 1
     if binarize:
-        # Your code here
-        raise NotImplementedError
+	    feature_matrix[feature_matrix > 0] = 1 # instead of considering counts, just considering its existence
     return feature_matrix
 
 
