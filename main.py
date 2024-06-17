@@ -107,13 +107,16 @@ plot_toy_results('Pegasos', thetas_pegasos)
 #-------------------------------------------------------------------------------
 
 # Your code here
-
+results=p1.classifier_accuracy(p1.pegasos,train_bow_features,test_bow_features,train_labels,test_labels,T=25,L=0.01)
+print(results)
 #-------------------------------------------------------------------------------
 # Assign to best_theta, the weights (and not the bias!) learned by your most
 # accurate algorithm with the optimal choice of hyperparameters.
 #-------------------------------------------------------------------------------
-
-# best_theta = None # Your code here
+# Your code here
+T=25
+L=0.01
+best_theta = p1.pegasos(train_bow_features,train_labels,T,L)  
 # wordlist   = [word for (idx, word) in sorted(zip(dictionary.values(), dictionary.keys()))]
 # sorted_word_features = utils.most_explanatory_word(best_theta, wordlist)
 # print("Most Explanatory Word Features")
