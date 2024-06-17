@@ -4,8 +4,8 @@ It starts with implementing the necessary unit of the algorithm, hinge loss (fir
 \
 In the end, the whole project checks a dataset consisting of website reviews and use the best performing algorithms among perceptron, average perceptron and Pegasos to do a sentiment analysis or classification. Namely, whether the review is positive or negative.\
 \
-Key knowledge points in this small project:\
-1. hinge loss function
+Key knowledge points in this small project:
+1. Hinge loss function
 2. Perceptron algorithm
 3. Pegasos algorithm
 4. Support vector machine
