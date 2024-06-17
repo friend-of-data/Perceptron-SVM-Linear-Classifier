@@ -42,7 +42,7 @@ def hinge_loss_single(feature_vector, label, theta, theta_0):
     output = label*(np.dot(feature_vector,theta,out=None)+theta_0)
     loss=max(0,1-output)
     return loss
-    raise NotImplementedError
+   
 
 
 
@@ -69,7 +69,7 @@ def hinge_loss_full(feature_matrix, labels, theta, theta_0):
     loss=np.mean(np.maximum(0,1-sign))
     return loss
 
-    raise NotImplementedError
+  
 
 
 
@@ -101,7 +101,7 @@ def perceptron_single_step_update(
         current_theta_0=current_theta_0+label
     
     return (current_theta,current_theta_0)
-    raise NotImplementedError
+ 
 
 
 
@@ -138,7 +138,7 @@ def perceptron(feature_matrix, labels, T):
             #raise NotImplementedError
     # Your code here
     return theta,theta_0
-    raise NotImplementedError
+
 
 
 
@@ -181,7 +181,7 @@ def average_perceptron(feature_matrix, labels, T):
     theta_final=theta_sum/(T*feature_matrix.shape[0])
     theta_0_final=theta_0_sum/(T*feature_matrix.shape[0])
     return theta_final,theta_0_final
-    raise NotImplementedError
+
 
 
 def pegasos_single_step_update(
@@ -218,7 +218,7 @@ def pegasos_single_step_update(
     else:
         theta=(1-eta*L)*theta
     return theta,theta_0    
-    raise NotImplementedError
+
 
 
 
@@ -258,7 +258,7 @@ def pegasos(feature_matrix, labels, T, L):
             theta,theta_0=pegasos_single_step_update(feature_matrix[i],labels[i],L,1/(m)**0.5,theta,theta_0)
             m += 1        
     return theta, theta_0   
-    raise NotImplementedError
+
 
 
 
@@ -295,8 +295,17 @@ def classify(feature_matrix, theta, theta_0):
         should be considered a positive classification.
     """
     # Your code here
-    raise NotImplementedError
-
+    output=np.matmul(feature_matrix,theta)+theta_0
+    label=np.where(output<0.0000001,-1,1)
+    return label
+    
+## helper function accuracy(already in place. no need to delete comment-out)
+#def accuracy(preds, targets):
+	"""
+	Given length-N vectors containing predicted and target labels,
+	returns the percentage and number of correct predictions.
+	"""
+#	return (preds == targets).mean()
 
 def classifier_accuracy(
         classifier,
@@ -332,7 +341,13 @@ def classifier_accuracy(
         accuracy of the trained classifier on the validation data.
     """
     # Your code here
-    raise NotImplementedError
+    theta, theta_0 = classifier(train_feature_matrix, train_labels,**kwargs)
+    train_preds = classify(train_feature_matrix, theta, theta_0)
+    val_preds = classify(val_feature_matrix, theta, theta_0)
+    train_accuracy_percentage = accuracy(train_preds, train_labels)
+    val_accuracy_percentage = accuracy(val_preds, val_labels)
+    return train_accuracy_percentage, val_accuracy_percentage
+    
 
 
 
