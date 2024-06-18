@@ -1,7 +1,7 @@
 from string import punctuation, digits
 import numpy as np # type: ignore
 import random
-
+from nltk.util import ngrams
 
 
 #==============================================================================
@@ -381,6 +381,11 @@ def bag_of_words(texts, remove_stopword=True):
     indices_by_word = {}  # maps word to unique index
     for text in texts:
         word_list = extract_words(text)
+	if len(word_list)>1:
+            grams=ngrams(word_list,2)  #generate bigrams
+            #grams_3=ngrams(word_list,3) #optional to also include trigrams
+            word_list += [' '.join(gram) for gram in grams]
+	    #word_list +=[' '.join(gram_3) for gram_3 in grams_3]
         for word in word_list:
             if word in indices_by_word: continue
             if remove_stopword and word in stopword: continue # consider removing stopwords in case it is set true 
