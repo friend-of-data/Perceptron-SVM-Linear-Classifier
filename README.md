@@ -1,5 +1,5 @@
 ## General information
-The codes in this repository demonstrates concepts and use case of linear classifier, specifically perceptron algorithm, average perceptron and one of perceptron's variation, Pegasos algorithm.<br>
+The codes in this repository uses machine learning technique to conduct a sentiment analysis for a given text, i.e. to evaluate whether the text is positive (e.g. praising) or negative (e.g. criticizing). Specifically, it demonstrates the concepts and use cases of linear classifier, especially perceptron algorithm, average perceptron and one of perceptron's variations, Pegasos algorithm.<br>
 <br>
 It starts with implementing the necessary unit of the algorithm, hinge loss (first for a single data point and then for the wholde datasets), parameters update (also first single data point and then the whole datasets).<br>
 <br>
