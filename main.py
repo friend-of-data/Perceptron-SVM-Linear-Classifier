@@ -121,3 +121,11 @@ best_theta = p1.pegasos(train_bow_features,train_labels,T,L)
 # sorted_word_features = utils.most_explanatory_word(best_theta[0], wordlist)
 # print("Most Explanatory Word Features")
 # print(sorted_word_features[:10])
+
+# save the best model parameter and dictionary for later deployment
+with open('dictionary.pk1','wb') as f:
+    pickle.dump(dictionary,f)
+
+with open('best_theta.pk1','wb') as f:
+    pickle.dump(best_theta,f)
+print('Training complete and model parameters saved')
